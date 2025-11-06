@@ -1,0 +1,543 @@
+
+
+Project Context:
+We are building a custom Agentic AI Portal for Microsoft Purview — a modern, intelligent web interface that allows users to interact with AI agents for information retrieval, data curation, and recommendations.
+The frontend should be implemented with mock data only (no real backend yet) and showcase chat simulation, UI flow, and interactions.
+Use a dark mode, modern design, and a left navigation sidebar.
+
+
+---
+
+🧭 Navigation Layout
+
+Left Sidebar Menu:
+
+1. 💬 Chat (Agent Interaction)
+
+
+2. 💡 Recommendations
+
+
+3. 🗂️ Data Assets (optional future feature)
+
+
+4. ⚙️ Settings (optional — theme toggle, user profile)
+
+
+
+
+---
+
+💬 1. Chat Page (Main AI Interaction Page)
+
+🔹 Purpose
+
+This page simulates an intelligent chat between the user and Purview AI agents (e.g., Information Agent, Data Curator Agent).
+
+🔹 Layout and Components
+
+Chat area: scrollable vertical feed showing alternating user/system messages.
+
+Input area (bottom sticky):
+
+Agent selection dropdown (default: “Information Agent”).
+
+Above the input box, show the selected agent name.
+
+When user types @, show autosuggestions of data assets (mock list like SalesDB, CustomerInfo, FinanceData, HRRecords).
+
+Add file upload button beside input (for uploading data).
+
+Add send icon (paper plane) for sending messages.
+
+
+Chat history section (left collapsible panel):
+
+Show list of previous chat sessions with timestamp and agent context.
+
+Click to reload a past conversation.
+
+
+
+
+---
+
+🧠 Chat Simulation Behavior (Use Mock Data)
+
+The chat UI should simulate a real conversation.
+When user types specific phrases, show pre-defined responses from mock data.
+
+Example simulated inputs and responses:
+
+User Input	Mock System Response
+
+"Give me asset related to sales"	Show a vertical card list of mock data assets like: <br>1️⃣ SalesDB (Owner: Raj, Collection: Finance)<br>2️⃣ Sales_Transactions_2024 (Owner: Priya, Collection: Retail)<br>3️⃣ Sales_Analytics_Report (Owner: Arun, Collection: BI)<br>Each card should have “➡️ View More” button that opens a detail page.
+"Curate @SalesDB"	Show curation card with editable metadata fields: Description, Owner, Sensitivity Label, Classification. Include ✅ Approve and ❌ Cancel buttons. On Approve, show success toast “Data asset successfully curated!”
+"Show metadata of @CustomerInfo"	Open a detail modal with metadata (mock JSON view or formatted table).
+"List all unassigned assets"	Show table or list of assets missing owner info.
+"Recommend me data products"	Redirect or show short preview link to “Recommendations” page.
+
+
+Chat should include mock typing animation and delayed responses to mimic real AI conversation.
+
+Include a small animated agent avatar beside system responses.
+
+
+
+---
+
+🗂️ Data Asset Detail View
+
+Shown when user clicks “View More” on any asset card.
+
+Show detailed metadata (mock fields like: Name, Type, Owner, Collection, Created Date, Sensitivity, etc.).
+
+If editable (curation flow), allow inline edits with Approve/Cancel buttons.
+
+
+
+---
+
+💡 2. Recommendations Page
+
+🔹 Purpose
+
+Displays AI-driven recommendations related to Purview governance, ownership, or quality.
+
+🔹 UI Components
+
+Header: “Purview Recommendations”
+
+Cards or List Items for each recommendation:
+
+Title (e.g., “Unassigned Data Owners”)
+
+Priority (High 🔴, Medium 🟠, Low 🟢)
+
+Description
+
+“Fix” button
+
+
+
+🔹 Mock Recommendations
+
+Title	Priority	Description	Fix Action
+
+“Data assets with no owner assigned”	High	5 assets don’t have an owner	Opens modal with asset list and mock “Assign Owner” button
+“Collections missing RBAC roles”	Medium	2 collections lack role configuration	Shows RBAC details
+“Data products not yet created”	Low	3 eligible assets can form data products	Opens mock form
+
+
+🔹 Extra Features
+
+Filter by priority level (dropdown).
+
+Badge counts by priority.
+
+Smooth modal for viewing recommendation details.
+
+
+
+---
+
+🌙 3. General UI Design Requirements
+
+Dark Mode UI (default)
+
+Accent color: Azure Blue or Electric Teal
+
+Rounded cards, subtle shadows, smooth hover effects
+
+Use modern component library (Tailwind + Shadcn UI or Material UI)
+
+Responsive layout (desktop-first)
+
+Include mock loading skeletons and toasts
+
+Smooth transition between pages
+
+
+
+---
+
+⚙️ Technical Setup for Vibe
+
+Use React or Next.js.
+
+Maintain mock data JSONs for:
+
+Chat responses
+
+Data assets
+
+Recommendations
+
+
+Maintain chat state in-memory per agent.
+
+Include dummy delay or typing indicator for realism.
+
+
+
+---
+
+🧠 Example User Flow
+
+1. User opens portal → lands on Chat Page.
+
+
+2. Selects “Information Agent”.
+
+
+3. Types: “Give me asset related to sales” → sees mock asset cards.
+
+
+4. Clicks “View More” → opens asset detail.
+
+
+5. Switches agent to “Data Curator Agent”.
+
+
+6. Types: “Curate @SalesDB” → sees editable curation card.
+
+
+7. Approves → gets success toast.
+
+
+8. Navigates to Recommendations Page → sees mock Purview issues with fix actions.
+
+
+
+
+---
+
+✅ Final Output Expectation
+
+A fully functional, mock-based frontend prototype of the Microsoft Purview Agentic AI Portal featuring:
+
+Modern dark-mode UI
+
+Left sidebar navigation
+
+Interactive chat simulation with @mentions and agent selection
+
+Data asset card/detail views
+
+Editable curation cards
+
+Recommendation management page with fix actions
+
+Smooth transitions and realistic AI-like behavior
+
+Note :  for select agent show some recommendations questions sould be asked so it's helpful  for simulation. And also created this new page Page Overview
+
+Page Name: Asset Detail Page
+Purpose:
+To display a single data asset’s full metadata, lineage summary, ownership, quality, and governance information in a visually appealing, structured, and editable format.
+
+
+---
+
+🧩 UI Layout Requirements
+
+🔹 Top Section – Asset Summary
+
+Card or header bar with:
+
+Asset Name (large font)
+
+Type (Database, File, Report, etc.)
+
+Collection Name
+
+Status Badge (e.g., “Curated”, “Unassigned”, “Pending Review”)
+
+Action Buttons: Edit, Approve, Cancel
+
+
+
+Example layout:
+
+[Sales_Transactions_2024]   [Database]   [Collection: Retail]   [Status: Pending Review]
+[Edit ✏️] [Approve ✅] [Cancel ❌]
+
+
+---
+
+🔹 Metadata Tabs / Sections
+
+Use tabbed navigation or a collapsible accordion for metadata categories.
+
+Suggested Tabs:
+
+1. Overview — Description, Owner, Collection, Sensitivity Label, Classification
+
+
+2. Technical Metadata — Schema, Fields, Data Type, Source Path, Storage Info
+
+
+3. Business Metadata — Business Glossary terms, Domain, Steward
+
+
+4. Quality & Compliance — Data quality score, Last scanned date, Validation rules
+
+
+5. Lineage (Mock Graph) — Simple visual representation (arrows/flow from upstream to downstream assets)
+
+
+6. Comments / Activity Log — User comments, approvals, and history timeline
+
+
+
+
+---
+
+🔹 Editing Mode
+
+When Edit is clicked, all editable fields switch to input boxes or dropdowns.
+
+Show Approve and Cancel buttons.
+
+On Approve, show success toast “✅ Asset metadata updated successfully”.
+
+On Cancel, revert to original mock data.
+
+
+
+---
+
+🔹 Related Assets Section
+
+Below metadata, show related assets in card view.
+
+Each card: asset name, type, relationship (upstream/downstream), “View” button.
+
+Clicking opens that asset in a new detail view.
+
+
+
+---
+
+🔹 Right Sidebar (Optional Insight Panel)
+
+Include a narrow right panel with:
+
+Quick info (Owner, Created Date, Sensitivity)
+
+Purview Tags / Labels
+
+Last Updated Timestamp
+
+AI Insight placeholder (“AI Suggests: Add Owner for better governance”)
+
+
+
+---
+
+🖼️ Visual & UX Design Requirements
+
+Dark mode UI with accent (Azure Blue or Teal)
+
+Rounded cards, minimalistic borders, smooth shadows
+
+Use Tailwind + Shadcn UI or Material UI
+
+Hover animations on buttons/cards
+
+Sticky top bar for actions
+
+Smooth transitions between tabs and edit states
+
+
+
+---
+
+⚙️ Data Setup (Mock JSON Example)
+
+{
+  "id": "asset_001",
+  "name": "Sales_Transactions_2024",
+  "type": "Database",
+  "collection": "Retail",
+  "owner": "Priya Sharma",
+  "status": "Pending Review",
+  "description": "Contains 2024 sales transaction records for retail stores.",
+  "sensitivityLabel": "Confidential",
+  "classification": "Finance Data",
+  "createdDate": "2024-02-15",
+  "lastModified": "2025-10-10",
+  "schema": [
+    { "field": "transaction_id", "type": "string" },
+    { "field": "store_id", "type": "integer" },
+    { "field": "amount", "type": "float" },
+    { "field": "date", "type": "datetime" }
+  ],
+  "lineage": [
+    { "upstream": "Sales_Raw_Data", "downstream": "Sales_Analytics_Report" }
+  ],
+  "qualityScore": "92%",
+  "tags": ["Finance", "Retail", "Critical"]
+}
+
+Use this JSON as mock input for rendering UI.
+
+
+---
+
+🧠 Interactions
+
+Show editable fields in Overview, Business Metadata, and Quality tabs.
+
+Implement mock Save (Approve) and Cancel.
+
+On Save: show success toast and refresh view.
+
+On navigation from chat (e.g., when user clicks “View More”), this page should open dynamically with mock data passed as route param (e.g., /asset/:id).
+
+
+
+---
+
+🪄 Optional Enhancements
+
+Add breadcrumb navigation → Home / Chat / Sales_Transactions_2024
+
+Include search within page for metadata fields.
+
+Add “AI Suggestions” box (mock text like “Consider adding classification for this data asset”).
+
+Add a small activity timeline showing who updated the asset last.
+
+Recommendation Details Page
+
+Purpose:
+This page opens when a user clicks on any recommendation item (like “Unassigned Data Owner” or “Uncurated Assets”) from the Recommendation Page. It should display all data assets that fall under that recommendation with an option to view or fix them.
+
+
+---
+
+🧩 UI Requirements:
+
+1. Header Section
+
+Page title: “Recommendation Details”
+
+Subheading showing which recommendation the user clicked (e.g., “Uncurated Data Assets”).
+
+A “Back” button to go back to the Recommendation list.
+
+
+
+2. Filter Bar
+
+Search bar to filter assets by name or tag.
+
+Dropdowns for:
+
+Importance (High / Medium / Low)
+
+Status (Pending / Fixed)
+
+Collection or Domain (mock filter)
+
+
+
+
+3. Main Content – Asset List
+
+Display all assets in card view or table view (modern, responsive, and scrollable).
+
+Each card should include:
+
+Asset Name
+
+Type (Dataset, File, Table, etc.)
+
+Importance Badge (High / Medium / Low)
+
+Status Chip (Pending / Fixed)
+
+Owner or Assigned User
+
+Quick Summary or Description
+
+View More or Fix button
+
+
+
+
+4. Fix Functionality Simulation
+
+When the user clicks Fix, show a modal dialog or side panel that allows:
+
+Assigning owner (dropdown or text field)
+
+Adding missing metadata (mock input fields)
+
+Changing importance or status
+
+“Save Fix” and “Cancel” buttons
+
+
+Once “Save Fix” is clicked, update the card status to Fixed (simulate the backend).
+
+
+
+5. Optional Additions
+
+Pagination or infinite scroll for large lists
+
+Dark Mode (modern look, rounded cards, glowing buttons)
+
+Toast Notifications for actions like “Fix Applied Successfully”
+
+Mock Data
+ Simulation (populate with fake Purview assets showing different statuses)
+
+
+
+
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
