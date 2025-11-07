@@ -1,4 +1,4 @@
-import { MessageSquare, Lightbulb, Database, Settings, Package } from "lucide-react";
+import { MessageSquare, Lightbulb, Database, Settings, Package, FileText } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import {
   Sidebar,
@@ -31,6 +31,11 @@ const menuItems = [
     title: "Data Assets",
     url: "/assets",
     icon: Database,
+  },
+  {
+    title: "Audit Logs",
+    url: "/audit",
+    icon: FileText,
   },
   {
     title: "Settings",

@@ -12,6 +12,7 @@ import RecommendationDetailPage from "@/pages/RecommendationDetailPage";
 import DataAssetsPage from "@/pages/DataAssetsPage";
 import DataProductsPage from "@/pages/DataProductsPage";
 import DataProductDetailPage from "@/pages/DataProductDetailPage";
+import AuditPage from "@/pages/AuditPage";
 import SettingsPage from "@/pages/SettingsPage";
 import NotFound from "@/pages/not-found";
 
@@ -25,6 +26,7 @@ function Router() {
       <Route path="/data-product/:id" component={DataProductDetailPage} />
       <Route path="/asset/:id" component={AssetDetailPage} />
       <Route path="/assets" component={DataAssetsPage} />
+      <Route path="/audit" component={AuditPage} />
       <Route path="/settings" component={SettingsPage} />
       <Route component={NotFound} />
     </Switch>

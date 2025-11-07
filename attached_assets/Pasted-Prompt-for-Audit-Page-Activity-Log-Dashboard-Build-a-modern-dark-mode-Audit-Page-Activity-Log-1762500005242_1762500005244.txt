@@ -1,0 +1,120 @@
+Prompt for “Audit Page” (Activity Log Dashboard)
+
+Build a modern, dark-mode Audit Page (Activity Log Dashboard) for a custom Microsoft Purview-like governance portal.
+
+This page should display all user and system-level activities — such as curation, updates, approvals, data product changes, agent interactions, and recommendations fixed — using mock data.
+
+🗂️ Page Layout:
+
+Title: Audit & Activity Logs
+
+Top Section (Filters):
+
+Date range picker (From – To)
+
+Dropdown filters:
+
+User / Agent (e.g., “Admin”, “Data Curator Agent”, “Information Agent”)
+
+Action Type (e.g., “Create”, “Update”, “Approve”, “Delete”, “Curate”)
+
+Asset Type (e.g., “Dataset”, “Data Product”, “Collection”, “Recommendation”)
+
+Search bar (for filtering by asset name or ID)
+
+“Export Logs” button (mock, not functional yet)
+
+📋 Audit Table / Activity Feed:
+
+Use a clean table or timeline-style view with following columns:
+
+Timestamp	User / Agent	Action	Target Asset	Details	Status
+2025-11-06 10:42 AM	Data Curator Agent	Curated	Sales_Transactions_2025	Schema standardized	✅ Success
+2025-11-06 09:15 AM	Admin	Approved	CRM_Leads_Data	Metadata approved	🟢 Completed
+2025-11-05 08:32 PM	Information Agent	Fetched Info	Finance_Dataset_2024	Read metadata details	🔵 Info
+2025-11-05 07:45 PM	Harshad	Updated	Data Product: Sales Insights	Updated lineage connection	🟠 Modified
+2025-11-04 02:15 PM	AI Recommendation Agent	Suggested Fix	Unassigned Collections	Missing RBAC roles	🟡 Suggested
+💾 Mock JSON Data for Simulation:
+[
+  {
+    "timestamp": "2025-11-06T10:42:00Z",
+    "user": "Data Curator Agent",
+    "action": "Curated",
+    "assetType": "Dataset",
+    "assetName": "Sales_Transactions_2025",
+    "details": "Schema standardized and validated by AI Agent",
+    "status": "Success"
+  },
+  {
+    "timestamp": "2025-11-06T09:15:00Z",
+    "user": "Admin",
+    "action": "Approved",
+    "assetType": "Dataset",
+    "assetName": "CRM_Leads_Data",
+    "details": "Approved after validation check",
+    "status": "Completed"
+  },
+  {
+    "timestamp": "2025-11-05T08:32:00Z",
+    "user": "Information Agent",
+    "action": "Fetched Info",
+    "assetType": "Dataset",
+    "assetName": "Finance_Dataset_2024",
+    "details": "Retrieved lineage and metadata successfully",
+    "status": "Info"
+  },
+  {
+    "timestamp": "2025-11-05T07:45:00Z",
+    "user": "Harshad",
+    "action": "Updated",
+    "assetType": "Data Product",
+    "assetName": "Sales Insights",
+    "details": "Lineage modified to include CRM data",
+    "status": "Modified"
+  },
+  {
+    "timestamp": "2025-11-04T02:15:00Z",
+    "user": "AI Recommendation Agent",
+    "action": "Suggested Fix",
+    "assetType": "Collection",
+    "assetName": "Unassigned Collections",
+    "details": "Detected missing RBAC roles in 2 collections",
+    "status": "Suggested"
+  }
+]
+
+🎨 UI Requirements:
+
+Use dark mode with accent colors (Azure blue + neon green highlights).
+
+Cards or table rows should have subtle hover effects and smooth transitions.
+
+Include icon indicators for each action type (🧩 Create, 🖋️ Update, ✅ Approve, 🧠 Curate, 💡 Suggest).
+
+Add a right-side drawer: When a user clicks a log entry, open a detail view showing:
+
+User/Agent info
+
+Asset details (name, type)
+
+Full change summary (diff or textual)
+
+JSON of metadata change (mock)
+
+Option to “Revert” or “Acknowledge” (mock action)
+
+Add pagination (10–20 logs per page)
+
+Simulate async loading (1s delay)
+
+Built using React + TailwindCSS + shadcn/ui + React Table or TanStack Table
+
+🧩 Bonus Feature Suggestions:
+
+Toggle between Table View and Timeline View
+
+Export audit logs (mock CSV)
+
+Filter by “AI vs Human” actions
+
+AI Summary Banner: “Most recent changes: 5 curated, 2 approved, 1 reverted today.”
