@@ -1,0 +1,95 @@
+Prompt for “Data Product Agent” Page (with mock JSON simulation)
+
+Create a modern, professional "Data Product Agent" page for an enterprise data governance platform (Purview-inspired).
+
+Add this page to the main navigation bar.
+
+This page should simulate end-to-end data product discovery and visualization using mock data, no backend needed.
+
+🏗️ Layout Flow:
+
+Dropdown (Select Collection Framework)
+
+Label: “Select Collection Framework”
+
+Mock values: Finance Framework, Marketing Framework, Sales Framework
+
+Once selected, show a generated list of data products below.
+
+List of Generated Data Products
+
+Display responsive cards with:
+
+dataProductName
+
+importance (High/Medium/Low with colored badges)
+
+shortDescription
+
+“View Details” button
+
+Clicking “View Details” opens the Data Product Detail Page.
+
+📄 Data Product Detail Page (Use Mock JSON Below)
+
+Use the following mock JSON to populate UI fields:
+
+{
+  "dataProductId": "DP-001",
+  "dataProductName": "Sales Performance Insights",
+  "importance": "High",
+  "curationDetails": {
+    "description": "This data product provides unified visibility into regional and product-wise sales performance, combining transactional and CRM data.",
+    "businessValue": "Helps leadership understand revenue trends, identify top-performing regions, and optimize sales strategy.",
+    "curator": "AI Data Product Agent",
+    "lastCuratedOn": "2025-11-05",
+    "status": "Auto-curated and validated"
+  },
+  "datasets": [
+    {
+      "datasetId": "DS-101",
+      "datasetName": "Sales_Transactions_2025",
+      "records": 123456,
+      "owner": "FinanceDept",
+      "lastRefreshed": "2025-11-04"
+    },
+    {
+      "datasetId": "DS-102",
+      "datasetName": "CRM_Leads_Data",
+      "records": 78234,
+      "owner": "MarketingDept",
+      "lastRefreshed": "2025-11-03"
+    }
+  ],
+  "lineage": {
+    "nodes": [
+      { "id": "CRM_Leads_Data", "type": "Source", "x": 100, "y": 100 },
+      { "id": "Sales_Transactions_2025", "type": "Source", "x": 100, "y": 300 },
+      { "id": "Sales_Performance_Insights", "type": "DataProduct", "x": 400, "y": 200 },
+      { "id": "Dashboard_PowerBI", "type": "Consumer", "x": 700, "y": 200 }
+    ],
+    "edges": [
+      { "source": "CRM_Leads_Data", "target": "Sales_Performance_Insights" },
+      { "source": "Sales_Transactions_2025", "target": "Sales_Performance_Insights" },
+      { "source": "Sales_Performance_Insights", "target": "Dashboard_PowerBI" }
+    ]
+  }
+}
+
+🧩 UI Requirements:
+
+Tabs: Dataset | Lineage
+
+Dataset Tab: show dataset cards (name, records, owner, refresh date, “View Dataset” button).
+
+Lineage Tab: render an interactive lineage graph using mock data above.
+
+Allow zoom, pan, and tooltip on hover (show node type).
+
+Add “Fit to Screen” and “Download as Image” buttons.
+
+All data is mocked — simulate async loading (e.g., 1s delay).
+
+Use TailwindCSS + React + shadcn/ui + recharts or react-flow for visuals.
+
+Style should match Microsoft Purview-like professional design with rounded cards, Fluent colors, and responsive layout.

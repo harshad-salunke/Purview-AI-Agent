@@ -10,6 +10,8 @@ import RecommendationsPage from "@/pages/RecommendationsPage";
 import AssetDetailPage from "@/pages/AssetDetailPage";
 import RecommendationDetailPage from "@/pages/RecommendationDetailPage";
 import DataAssetsPage from "@/pages/DataAssetsPage";
+import DataProductsPage from "@/pages/DataProductsPage";
+import DataProductDetailPage from "@/pages/DataProductDetailPage";
 import SettingsPage from "@/pages/SettingsPage";
 import NotFound from "@/pages/not-found";
 
@@ -19,6 +21,8 @@ function Router() {
       <Route path="/" component={ChatPage} />
       <Route path="/recommendations" component={RecommendationsPage} />
       <Route path="/recommendation/:id" component={RecommendationDetailPage} />
+      <Route path="/data-products" component={DataProductsPage} />
+      <Route path="/data-product/:id" component={DataProductDetailPage} />
       <Route path="/asset/:id" component={AssetDetailPage} />
       <Route path="/assets" component={DataAssetsPage} />
       <Route path="/settings" component={SettingsPage} />

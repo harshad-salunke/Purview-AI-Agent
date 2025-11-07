@@ -1,4 +1,4 @@
-import { MessageSquare, Lightbulb, Database, Settings } from "lucide-react";
+import { MessageSquare, Lightbulb, Database, Settings, Package } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import {
   Sidebar,
@@ -21,6 +21,11 @@ const menuItems = [
     title: "Recommendations",
     url: "/recommendations",
     icon: Lightbulb,
+  },
+  {
+    title: "Data Products",
+    url: "/data-products",
+    icon: Package,
   },
   {
     title: "Data Assets",
